@@ -88,3 +88,6 @@ cloud-init clean --logs
 # Cleanup shell history
 at /dev/null > ~/.bash_history && history -c
 history -w
+
+# Shutdown
+shutdown -h now
