@@ -20,7 +20,7 @@ fi
 
 set -v
 
-# Update packaged
+# Update packages
 apt update -y
 apt upgrade -y
 
@@ -80,7 +80,7 @@ hostnamectl set-hostname localhost
 apt clean
 
 # Set DHCP by MAC Address
-sed -i 's/optional: true/dhcp-identifier: mac/g' /etc/netplan/50-cloud-init.yaml
+sed -i 's/optional: true/dhcp-identifier: mac/g' /etc/netplan/00-installer-config.yaml
 
 # Cleanup cloud-init
 cloud-init clean --logs
