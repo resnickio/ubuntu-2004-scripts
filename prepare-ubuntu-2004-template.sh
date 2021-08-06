@@ -79,8 +79,19 @@ hostnamectl set-hostname localhost
 # Cleanup apt
 apt clean
 
+# Clean netplan folder
+rm /etc/netplan/*
+
 # Set DHCP by MAC Address
-sed -i 's/optional: true/dhcp-identifier: mac/g' /etc/netplan/00-installer-config.yaml
+cat <<EOL | tee 00-installer-config.yaml
+# Network config from prepare-ubuntu-2004-template.sh
+network:
+  ethernets:
+    ens160:
+      dhcp4: true
+      dhcp-identifier: mac
+  version: 2
+EOL
 
 # Cleanup cloud-init
 cloud-init clean --logs
