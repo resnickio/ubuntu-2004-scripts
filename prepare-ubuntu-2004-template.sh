@@ -83,7 +83,7 @@ apt clean
 rm /etc/netplan/*
 
 # Set DHCP by MAC Address
-cat <<EOL | tee 00-installer-config.yaml
+cat <<EOL | tee /etc/netplan/00-default-config.yaml
 # Network config from prepare-ubuntu-2004-template.sh
 network:
   ethernets:
